@@ -1,33 +1,12 @@
 package edu.simulator;
 
-import static org.lwjgl.opengl.GL11.GL_BLEND;
-import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
-import static org.lwjgl.opengl.GL11.GL_DEPTH_TEST;
-import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
-import static org.lwjgl.opengl.GL11.GL_ONE_MINUS_SRC_ALPHA;
-import static org.lwjgl.opengl.GL11.GL_PROJECTION;
-import static org.lwjgl.opengl.GL11.GL_SRC_ALPHA;
-import static org.lwjgl.opengl.GL11.glBlendFunc;
-import static org.lwjgl.opengl.GL11.glClear;
-import static org.lwjgl.opengl.GL11.glClearColor;
-import static org.lwjgl.opengl.GL11.glDisable;
-import static org.lwjgl.opengl.GL11.glEnable;
-import static org.lwjgl.opengl.GL11.glLoadIdentity;
-import static org.lwjgl.opengl.GL11.glMatrixMode;
-import static org.lwjgl.opengl.GL11.glOrtho;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import static org.lwjgl.opengl.GL11.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
-import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
+
 
 public class Main {
 	private Simulator simulator;
@@ -37,18 +16,15 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-	
 		initDisplay();
 		initGL();
 		NString.initNString();
 		Main main = new Main(new Simulator());
 		main.loop();
 		cleanUp();
-
 	}
 	
 	private static void initDisplay(){
-		
 		try{
 			setDisplayMode(1100, 650);
 			Display.setTitle("Simulator");
@@ -85,7 +61,6 @@ public class Main {
 	}
 	
 	public static void setDisplayMode(int width, int height) {
-
 	    if ((Display.getDisplayMode().getWidth() == width) && 
 	        (Display.getDisplayMode().getHeight() == height)) {
 		    return;
